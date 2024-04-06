@@ -1,8 +1,9 @@
-//Pookie Clicker UwU <3
-//Hi friends, especially made for sad pookies (we hope this is not you), this cookie clicker game is what our team thinks to be a lovely mood booster and work motivator. Hopefully, this will be able to cheer you up. :) When I am sad, I like to look at this lil guy (his name is Pookie) and his funny little stature brightens my day, if only marginally!
 const pookie = document.getElementById("clicker");
-
+const upgradeElement = document.getElementById("upgrade");
 const count = document.getElementById("count");
+const lvl = document.getElementById("lvl");
+
+const pookieAudio = new Audio("pookieeeeeee.mp3");
 
 let pookies = 0;
 let level = 1;
@@ -22,14 +23,40 @@ window.onload = () => {
     level = 1;
   }
 
-  count.innerHTML = "You have " + pookies + " Pookies!";
+  let cost = 10 ** level / 2;
 
-  
+  let upgradeMessage = `Upgrade your pookie! Costs ${cost} pookies.`;
+
+  console.log(upgradeMessage);
+
+  count.innerHTML = "You have " + pookies + " Pookies!";
+  upgradeElement.value = upgradeMessage;
+  lvl.innerHTML = "Pookie level: " + level;
 
   console.log("hello");
 };
 
+const upgrade = () => {
+  let cost = 10 ** level / 2;
+
+  if (pookies >= cost) {
+    pookies -= cost;
+    level += 1;
+    cost = 10 ** level / 2;
+    lvl.innerHTML = "Pookie level: " + level;
+
+    count.innerHTML = "You have " + pookies + " Pookies!";
+    upgradeElement.value = `Upgrade your pookie! Costs ${cost} pookies.`;
+
+    console.log("upgrade");
+  }
+};
+
+upgradeElement.addEventListener("click", upgrade);
+
 pookie.addEventListener("click", () => {
+  pookieAudio.play();
+
   pookies = pookies + level;
   count.innerHTML = "You have " + pookies + " Pookies!";
 });

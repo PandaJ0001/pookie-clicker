@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html>
   <head>
@@ -9,37 +10,44 @@
 
   <body>
     <h1 class="title">Welcome to Pookie Clicker!</h1>
-    <p class="description">Get started by clicking on the Pookie</p>
-   
+    <p class="description">Click on the Pookie to pet it and feel better</p>
+
     <html lang="en">
-    <head>
-    <meta charset="utf-8">
-    <title>Display Image inside button Element in HTML</title>
-    </head>
+      <head>
+        <meta charset="utf-8" />
+        <title>Display Image inside button Element in HTML</title>
+      </head>
       <style>
-          .image-btn{
-              background: none;
-              border: none;
-              padding: 0;
-          }
-          .image-btn img{
-              display: block; /* to remove extra space below image */
-          }
+        .image-btn {
+          background: none;
+          border: none;
+          padding: 0;
+        }
+        .image-btn img {
+          display: block;
+        }
       </style>
-    <body>
+      <body>
         <button type="button" class="image-btn">
-            
-            <img id="clicker"  src="https://tr.rbxcdn.com/5082a550ecab540a4b4f0b584581e838/420/420/Hat/Png" width="250">
+          <img
+            id="clicker"
+            src="https://tr.rbxcdn.com/5082a550ecab540a4b4f0b584581e838/420/420/Hat/Png"
+            width="250"
+          />
         </button>
-    </body>
+      </body>
     </html>
 
-    <h2 id="lvl">Pookie level: </h2>
-      
-    <p id="count">You have  many Pookies!</p>
-      
-      <button id = "upgrade" onclick="upgrade()">Upgrade your pookie! Costs undefined pookies.</button>
-      <h2 id="counting"></h2>    
+    <h2 id="lvl">Pookie level:</h2>
+
+    <p id="count">You have many Pookies!</p>
+
+    <input
+      id="upgrade"
+      type="button"
+      value="Upgrade your pookie! Costs undefined pookies."
+    ></input>
+    <h2 id="counting"></h2>
     <script type="module" src="script.js"></script>
   </body>
 </html>
