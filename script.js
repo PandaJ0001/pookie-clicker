@@ -18,12 +18,12 @@ window.onload = () => {
   pookies = getCookie("counter");
   level = getCookie("level");
 
-  if (pookies == undefined || levels == undefined) {
+  if (pookies == undefined || level == undefined) {
     pookies = 0;
     level = 1;
   }
 
-  let cost = 10 ** level / 2;
+  let cost = Math.floor(10 ** level / level ** 2);
 
   let upgradeMessage = `Upgrade your pookie! Costs ${cost} pookies.`;
 
@@ -33,20 +33,25 @@ window.onload = () => {
   upgradeElement.value = upgradeMessage;
   lvl.innerHTML = "Pookie level: " + level;
 
+  document.cookie = `counter=${pookies}; level=${level}; Expires=Thu, 31 Dec 2099 12:00:00 UTC;`;
+
   console.log("hello");
 };
 
 const upgrade = () => {
-  let cost = 10 ** level / 2;
+  let cost = Math.floor(10 ** level / level ** 2);
 
   if (pookies >= cost) {
     pookies -= cost;
     level += 1;
-    cost = 10 ** level / 2;
+    cost = Math.floor(10 ** level / level ** 2);
     lvl.innerHTML = "Pookie level: " + level;
+    pookie.width = 250 + (level - 1) * 25;
 
     count.innerHTML = "You have " + pookies + " Pookies!";
     upgradeElement.value = `Upgrade your pookie! Costs ${cost} pookies.`;
+
+    document.cookie = `counter=${pookies}; level=${level}; Expires=Thu, 31 Dec 2099 12:00:00 UTC;`;
 
     console.log("upgrade");
   }
@@ -59,4 +64,6 @@ pookie.addEventListener("click", () => {
 
   pookies = pookies + level;
   count.innerHTML = "You have " + pookies + " Pookies!";
+
+  document.cookie = `counter=${pookies}; level=${level}; Expires=Thu, 31 Dec 2099 12:00:00 UTC;`;
 });
